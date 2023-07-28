@@ -4,27 +4,33 @@ import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
 import { useState } from "react";
 import styles from "../../styles/RootLayout.module.css";
+import DropDown from "../UI/DropDown";
 
 const { Header, Content, Footer } = Layout;
-
-const navItems = [
-  {
-    path: "/allNews",
-    name: "All News",
-  },
-  {
-    path: "/about",
-    name: "About Us",
-  },
-  {
-    path: "/contact",
-    name: "Contact Us",
-  },
-];
 
 const RootLayout = ({ children }) => {
   const { data: session } = useSession();
   const [navActive, setNavActive] = useState(false);
+
+  const navItems = (
+    <>
+      <DropDown />
+      <Button type="primary">
+        <Link href="/pc-builder">PC Builder</Link>
+      </Button>
+
+      {
+        // login and logout
+        session?.user?.email ? (
+          <Button type="primary" danger onClick={() => signOut()}>
+            Logout
+          </Button>
+        ) : (
+          <Link href="/login">Login</Link>
+        )
+      }
+    </>
+  );
 
   return (
     <Layout>
@@ -51,24 +57,7 @@ const RootLayout = ({ children }) => {
 
         {/* // desktop */}
         <Menu theme="dark" mode="vertical" className={styles.menu_items}>
-          <Space size={"middle"}>
-            {navItems.map((item, index) => (
-              <Link key={index} href={item.path}>
-                {item.name}
-              </Link>
-            ))}
-
-            {
-              // login and logout
-              session?.user?.email ? (
-                <Button type="primary" danger onClick={() => signOut()}>
-                  Logout
-                </Button>
-              ) : (
-                <Link href="/login">Login</Link>
-              )
-            }
-          </Space>
+          <Space size={"middle"}>{navItems}</Space>
         </Menu>
 
         <div
@@ -83,22 +72,7 @@ const RootLayout = ({ children }) => {
           navActive && (
             <Menu mode="horizontal" className={styles.menu_items_mobile}>
               <Space size={"large"} className={styles.mobile_nav_div}>
-                {navItems.map((item, index) => (
-                  <Link key={index} href={item.path}>
-                    {item.name}
-                  </Link>
-                ))}
-
-                {
-                  // login and logout
-                  session?.user?.email ? (
-                    <Button type="primary" danger onClick={() => signOut()}>
-                      Logout
-                    </Button>
-                  ) : (
-                    <Link href="/login">Login</Link>
-                  )
-                }
+                {navItems}
               </Space>
             </Menu>
           )
