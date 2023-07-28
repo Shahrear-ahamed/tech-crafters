@@ -1,6 +1,25 @@
-import { Layout, Menu } from "antd";
+import { Layout, Menu, Space } from "antd";
 import Link from "next/link";
 const { Header, Content, Footer } = Layout;
+
+const navItems = [
+  {
+    path: "/allNews",
+    name: "All News",
+  },
+  {
+    path: "/about",
+    name: "About Us",
+  },
+  {
+    path: "/contact",
+    name: "Contact Us",
+  },
+  {
+    path: "/login",
+    name: "Login",
+  },
+];
 
 const RootLayout = ({ children }) => {
   return (
@@ -25,20 +44,13 @@ const RootLayout = ({ children }) => {
           </h1>
         </div>
         <Menu theme="dark" mode="vertical" className="menu_items">
-          <Link href="/allNews">
-            <items>All News</items>
-          </Link>
-          <Link href="/about">
-            <items
-              style={{
-                margin: "0px 25px",
-              }}>
-              About Us
-            </items>
-          </Link>
-          <Link href="/contact">
-            <items>Contact Us</items>
-          </Link>
+          <Space size={"middle"}>
+            {navItems.map((item, index) => (
+              <Link key={index} href={item.path}>
+                {item.name}
+              </Link>
+            ))}
+          </Space>
         </Menu>
       </Header>
 
