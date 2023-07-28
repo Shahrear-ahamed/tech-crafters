@@ -1,15 +1,22 @@
 import {
-    GithubOutlined,
-    GoogleOutlined,
-    LoginOutlined,
+  GithubOutlined,
+  GoogleOutlined,
+  LoginOutlined,
 } from "@ant-design/icons";
 import { Button, Space, Typography } from "antd";
-import { signIn } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
+import { useRouter } from "next/router";
 import styles from "../styles/Login.module.css";
 
-const { Text,Title } = Typography;
+const { Text, Title } = Typography;
 
 function Login() {
+  const { status } = useSession();
+  const router = useRouter();
+
+  if (status === "authenticated") {
+    router.push("/");
+  }
 
   return (
     <div className={styles.login_section}>
@@ -26,7 +33,7 @@ function Login() {
             }}>
             <LoginOutlined className={styles.login_icon} />
           </div>
-          <Title className={styles.loginText}>Login account</Title>
+          <Title level={2}>Login account</Title>
         </div>
         <Space direction="vertical" size={18} align="center">
           <Button
