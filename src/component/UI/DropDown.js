@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 
 const items = [
   {
-    label: "CPU / Processor",
+    label: "Processor",
     key: "1",
     value: "processor",
   },
@@ -14,19 +14,19 @@ const items = [
     value: "motherboard",
   },
   {
-    label: "RAM",
+    label: "Ram",
     key: "3",
     value: "ram",
   },
   {
     label: "Power Supply Unit",
     key: "4",
-    value: "psu",
+    value: "power-supply-unit",
   },
   {
     label: "Storage Device",
     key: "5",
-    value: "storage",
+    value: "storage-device",
   },
   {
     label: "Monitor",
@@ -42,7 +42,7 @@ export default function DropDown() {
     const data = e.domEvent.target.innerText;
     const url = items.find((item) => item.label === data).value;
 
-    router.push(`/${url}`);
+    router.push(`/component/${url}`);
   };
 
   const menuProps = {

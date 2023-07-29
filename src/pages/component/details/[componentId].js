@@ -31,7 +31,9 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps = async ({ params }) => {
-  const res = await fetch(`http://localhost:3000/api/${params.componentId}`);
+  const res = await fetch(
+    `http://localhost:3000/api/component/${params.componentId}`
+  );
   const data = await res.json();
 
   // return individuals component

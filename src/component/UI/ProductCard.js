@@ -18,7 +18,7 @@ const ProductCard = ({ product }) => {
   } = product;
 
   return (
-    <Link href={`/component/${id}`}>
+    <Link href={`/component/details/${id}`}>
       <Card
         hoverable
         style={{ width: 260 }}

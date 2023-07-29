@@ -1,5 +1,5 @@
-import connectDB from "../../../server/middleware/mongodb";
-import Component from "../../../server/models/Components.model";
+import connectDB from "../../../../server/middleware/mongodb";
+import Component from "../../../../server/models/Components.model";
 
 const handler = async (req, res) => {
   const componentId = req.query.componentId;
