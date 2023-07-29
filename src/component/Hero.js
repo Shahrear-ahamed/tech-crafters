@@ -1,4 +1,6 @@
+/* eslint-disable @next/next/no-img-element */
 import { Carousel } from "antd";
+import sliderImg from "../../public/slider_template.png";
 const contentStyle = {
   height: "160px",
   color: "#fff",
@@ -9,7 +11,7 @@ const contentStyle = {
 const Hero = () => (
   <Carousel effect="scrollx" autoplay autoplaySpeed={10000}>
     <div>
-      <h3 style={contentStyle}>1</h3>
+      <img src={sliderImg} alt="Slider image" />
     </div>
     <div>
       <h3 style={contentStyle}>2</h3>

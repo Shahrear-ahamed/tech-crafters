@@ -1,5 +1,4 @@
 import FeaturedProducts from "@/component/FeaturedProducts";
-import Hero from "@/component/Hero";
 import RootLayout from "@/component/Layout/RootLayout";
 import Head from "next/head";
 
@@ -15,10 +14,6 @@ export default function Home({ randomComponents }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-      <section>
-        <Hero />
-      </section>
 
       <section>
         <FeaturedProducts components={randomComponents} />
