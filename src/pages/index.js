@@ -1,7 +1,9 @@
+import FeaturedProducts from "@/component/FeaturedProducts";
+import Hero from "@/component/Hero";
 import RootLayout from "@/component/Layout/RootLayout";
 import Head from "next/head";
 
-export default function Home() {
+export default function Home({ randomComponents }) {
   return (
     <>
       <Head>
@@ -14,13 +16,24 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div>
-        <h1>Home</h1>
-      </div>
+      <section>
+        <Hero />
+      </section>
+
+      <section>
+        <FeaturedProducts components={randomComponents} />
+      </section>
     </>
   );
 }
 
 Home.getLayout = function getLayout(page) {
   return <RootLayout>{page}</RootLayout>;
+};
+
+export const getStaticProps = async () => {
+  const res = await fetch("http://localhost:3000/api/randomComponents");
+  const randomComponents = await res.json();
+
+  return { props: { randomComponents } };
 };

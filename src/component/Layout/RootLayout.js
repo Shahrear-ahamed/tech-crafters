@@ -85,6 +85,7 @@ const RootLayout = ({ children }) => {
           margin: "10px auto",
           width: "95%",
           minHeight: "80vh",
+          backgroundColor: "#F2F4F8",
         }}>
         {children}
       </Content>
