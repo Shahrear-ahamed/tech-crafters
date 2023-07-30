@@ -33,6 +33,21 @@ const items = [
     key: "6",
     value: "monitor",
   },
+  {
+    label: "Keyboard",
+    key: "6",
+    value: "keyboard",
+  },
+  {
+    label: "Mouse",
+    key: "6",
+    value: "mouse",
+  },
+  {
+    label: "Graphics Card",
+    key: "6",
+    value: "gpu",
+  },
 ];
 
 export default function DropDown() {

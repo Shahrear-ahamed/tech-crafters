@@ -1,8 +1,13 @@
+import FeaturedCategory from "@/component/FeaturedCategory";
 import FeaturedProducts from "@/component/FeaturedProducts";
+import Footer from "@/component/Footer";
+import Hero from "@/component/Hero";
 import RootLayout from "@/component/Layout/RootLayout";
 import Head from "next/head";
 
-export default function Home({ randomComponents }) {
+export default function Home({ randomComponents, allComponents }) {
+  console.log(allComponents);
+
   return (
     <>
       <Head>
@@ -16,8 +21,19 @@ export default function Home({ randomComponents }) {
       </Head>
 
       <section>
+        <Hero />
+      </section>
+
+      <section>
         <FeaturedProducts components={randomComponents} />
       </section>
+      <section>
+        <FeaturedCategory categories={allComponents} />
+      </section>
+
+      <footer>
+        <Footer />
+      </footer>
     </>
   );
 }
@@ -27,8 +43,13 @@ Home.getLayout = function getLayout(page) {
 };
 
 export const getStaticProps = async () => {
-  const res = await fetch("http://localhost:3000/api/randomComponents");
-  const randomComponents = await res.json();
+  const randomComponentsRes = await fetch(
+    "http://localhost:3000/api/randomComponents"
+  );
+  const allComponentsRes = await fetch("http://localhost:3000/api/categories");
 
-  return { props: { randomComponents } };
+  const randomComponents = await randomComponentsRes.json();
+  const allComponents = await allComponentsRes.json();
+
+  return { props: { randomComponents, allComponents } };
 };

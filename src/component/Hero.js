@@ -1,27 +1,26 @@
-/* eslint-disable @next/next/no-img-element */
-import { Carousel } from "antd";
-import sliderImg from "../../public/slider_template.png";
-const contentStyle = {
-  height: "160px",
-  color: "#fff",
-  lineHeight: "160px",
-  textAlign: "center",
-  background: "#364d79",
+import { Typography } from "antd";
+import styles from "../styles/Home.module.css";
+import Link from "next/link";
+
+const { Title, Text } = Typography;
+
+const Hero = () => {
+  return (
+    <div className={styles.hero_section}>
+      <div className={styles.hero_div}>
+        <div className={styles.hero_text}>
+          <h5 level={5} className={styles.hero_title}>
+            Discover Your Adventure
+          </h5>
+          <p>Unlock the Ultimate World of Computing and Gaming Excellence.</p>
+          <div>
+            <Link href="/pc-builder" className={styles.hero_link}>
+              Build Your Own Pc
+            </Link>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 };
-const Hero = () => (
-  <Carousel effect="scrollx" autoplay autoplaySpeed={10000}>
-    <div>
-      <img src={sliderImg} alt="Slider image" />
-    </div>
-    <div>
-      <h3 style={contentStyle}>2</h3>
-    </div>
-    <div>
-      <h3 style={contentStyle}>3</h3>
-    </div>
-    <div>
-      <h3 style={contentStyle}>4</h3>
-    </div>
-  </Carousel>
-);
 export default Hero;
