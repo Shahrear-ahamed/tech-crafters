@@ -51,14 +51,6 @@ ChooseComponent.getLayout = function getLayout(page) {
 };
 
 export const getServerSideProps = async (context) => {
-  // if (typeof window === "undefined") {
-  //   return {
-  //     props: {
-  //       chooseSlugComponents: [],
-  //     },
-  //   };
-  // }
-
   const { slug } = context.params;
 
   const res = await fetch(`${process.env.URL}/api/component/category/${slug}`);

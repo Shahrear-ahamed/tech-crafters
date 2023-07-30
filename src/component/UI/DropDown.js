@@ -35,17 +35,17 @@ const items = [
   },
   {
     label: "Keyboard",
-    key: "6",
+    key: "7",
     value: "keyboard",
   },
   {
     label: "Mouse",
-    key: "6",
+    key: "8",
     value: "mouse",
   },
   {
     label: "Graphics Card",
-    key: "6",
+    key: "9",
     value: "gpu",
   },
 ];

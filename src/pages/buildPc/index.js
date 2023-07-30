@@ -65,14 +65,6 @@ PcBuilder.getLayout = function getLayout(page) {
 };
 
 export async function getServerSideProps() {
-  // if (typeof window === "undefined") {
-  //   return {
-  //     props: {
-  //       categories: [],
-  //     },
-  //   };
-  // }
-
   const res = await fetch(`${process.env.URL}/api/categories`);
   const data = await res.json();
 
