@@ -1,6 +1,6 @@
 import { Typography } from "antd";
-import styles from "../styles/Home.module.css";
 import Link from "next/link";
+import styles from "../styles/Home.module.css";
 
 const { Title, Text } = Typography;
 
@@ -14,7 +14,7 @@ const Hero = () => {
           </h5>
           <p>Unlock the Ultimate World of Computing and Gaming Excellence.</p>
           <div>
-            <Link href="/pc-builder" className={styles.hero_link}>
+            <Link href="/buildPc" className={styles.hero_link}>
               Build Your Own Pc
             </Link>
           </div>

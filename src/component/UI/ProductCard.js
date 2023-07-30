@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import { Card, Tooltip, Typography } from "antd";
+import Image from "next/image";
 import Link from "next/link";
 import ReactStars from "react-rating-stars-component";
 import styles from "../../styles/ProductCard.module.css";
@@ -22,7 +23,15 @@ const ProductCard = ({ product }) => {
       <Card
         hoverable
         style={{ width: 260 }}
-        cover={<img className={styles.product_img} src={image} alt={title} />}>
+        cover={
+          <Image
+            height={220}
+            width={260}
+            className={styles.product_img}
+            src={image}
+            alt={title}
+          />
+        }>
         <div>
           <Tooltip
             placement="topLeft"

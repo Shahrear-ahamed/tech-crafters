@@ -3,6 +3,7 @@ import styles from "@/styles/DetailedComponent.module.css";
 
 import TabsCom from "@/component/TabsCom";
 import { Typography } from "antd";
+import Image from "next/image";
 
 const { Text, Title } = Typography;
 
@@ -24,8 +25,15 @@ const Details = ({ component }) => {
     <div className={styles.details_main}>
       <div className={styles.details_top}>
         <div className={styles.img_div}>
-          <img src={image} alt={productName} className={styles.details_img} />
+          {/* <img src={image} alt={productName} className={styles.details_img} /> */}
+          <Image
+            src={image}
+            alt={productName}
+            height={300}
+            width={300}
+          />
         </div>
+
         <div className={styles.details_key_features}>
           <Title level={3}>{productName}</Title>
           <Text className={styles.brand} strong>

@@ -16,7 +16,7 @@ const RootLayout = ({ children }) => {
     <>
       <DropDown />
       <Button type="primary">
-        <Link href="/pc-builder">PC Builder</Link>
+        <Link href="/buildPc">PC Builder</Link>
       </Button>
 
       {
