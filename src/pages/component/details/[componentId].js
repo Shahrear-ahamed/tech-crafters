@@ -25,7 +25,6 @@ const Details = ({ component }) => {
     <div className={styles.details_main}>
       <div className={styles.details_top}>
         <div className={styles.img_div}>
-          {/* <img src={image} alt={productName} className={styles.details_img} /> */}
           <Image src={image} alt={productName} height={300} width={300} />
         </div>
 
@@ -64,6 +63,13 @@ Details.getLayout = function getLayout(page) {
 };
 
 export const getStaticPaths = async () => {
+  if (typeof window === "undefined") {
+    return {
+      props: {
+        components: [],
+      },
+    };
+  }
   const res = await fetch(`${process.env.URL}/api/components`);
   const components = await res.json();
 
@@ -77,11 +83,18 @@ export const getStaticPaths = async () => {
   // return all paths for getting ids
   return {
     paths,
-    fallback: true,
+    fallback: false,
   };
 };
 
 export const getStaticProps = async ({ params }) => {
+  if (typeof window === "undefined") {
+    return {
+      props: {
+        component: [],
+      },
+    };
+  }
   const res = await fetch(
     `${process.env.URL}/api/component/${params.componentId}`
   );

@@ -49,11 +49,16 @@ ComponentCategory.getLayout = function getLayout(page) {
 };
 
 export const getServerSideProps = async (context) => {
+  // if (typeof window === "undefined") {
+  //   return {
+  //     props: {
+  //       slugComponents: [],
+  //     },
+  //   };
+  // }
   const { slug } = context.params;
 
-  const res = await fetch(
-    `${process.env.URL}/api/component/category/${slug}`
-  );
+  const res = await fetch(`${process.env.URL}/api/component/category/${slug}`);
   const slugComponents = await res.json();
 
   return { props: { slugComponents } };

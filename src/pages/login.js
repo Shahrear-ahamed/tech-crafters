@@ -13,6 +13,7 @@ const { Text, Title } = Typography;
 function Login() {
   const { status } = useSession();
   const router = useRouter();
+  const urlLink = process.env.URL;
 
   if (status === "authenticated") {
     router.push("/");
@@ -43,7 +44,7 @@ function Login() {
             className={styles.login_button}
             onClick={() =>
               signIn("google", {
-                callbackUrl: `${process.env.URL}/`,
+                callbackUrl: urlLink,
               })
             }>
             Login with Google
@@ -55,7 +56,7 @@ function Login() {
             className={styles.login_button}
             onClick={() =>
               signIn("github", {
-                callbackUrl: `${process.env.URL}/`,
+                callbackUrl: urlLink,
               })
             }>
             Login with Github

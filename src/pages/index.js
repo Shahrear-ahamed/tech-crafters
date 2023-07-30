@@ -41,6 +41,15 @@ Home.getLayout = function getLayout(page) {
 };
 
 export const getStaticProps = async () => {
+  // if (typeof window === "undefined") {
+  //   return {
+  //     props: {
+  //       randomComponents: [],
+  //       allComponents: [],
+  //     },
+  //   };
+  // }
+
   const randomComponentsRes = await fetch(
     `${process.env.URL}/api/randomComponents`
   );
