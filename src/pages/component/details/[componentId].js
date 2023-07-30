@@ -1,9 +1,57 @@
 import RootLayout from "@/component/Layout/RootLayout";
+import styles from "@/styles/DetailedComponent.module.css";
+
+import TabsCom from "@/component/TabsCom";
+import { Typography } from "antd";
+
+const { Text, Title } = Typography;
 
 const Details = ({ component }) => {
-  console.log("componentId", component);
+  const {
+    _id,
+    status,
+    reviews,
+    productName,
+    price,
+    keyFeatures,
+    image,
+    description,
+    category,
+    averageRating,
+  } = component;
 
-  return <div>This is component details</div>;
+  return (
+    <div className={styles.details_main}>
+      <div className={styles.details_top}>
+        <div className={styles.img_div}>
+          <img src={image} alt={productName} className={styles.details_img} />
+        </div>
+        <div className={styles.details_key_features}>
+          <Title level={3}>{productName}</Title>
+          <Text className={styles.brand} strong>
+            <Text type="secondary">Brand:</Text> {keyFeatures?.brand}
+          </Text>
+
+          <div className={styles.status_div}>
+            <Text>Category: {category}</Text>
+            <Text type={status === "In Stock" ? "success" : "danger"}>
+              {status}
+            </Text>
+          </div>
+          <Title level={4}>Price: ${price}</Title>
+        </div>
+      </div>
+
+      <div className={styles.details_bottom}>
+        <TabsCom
+          reviews={reviews}
+          description={description}
+          keyFeatures={keyFeatures}
+          averageRating={averageRating}
+        />
+      </div>
+    </div>
+  );
 };
 
 export default Details;

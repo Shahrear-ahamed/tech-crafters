@@ -6,8 +6,6 @@ import RootLayout from "@/component/Layout/RootLayout";
 import Head from "next/head";
 
 export default function Home({ randomComponents, allComponents }) {
-  console.log(allComponents);
-
   return (
     <>
       <Head>
