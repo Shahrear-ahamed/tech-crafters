@@ -43,7 +43,7 @@ function Login() {
             className={styles.login_button}
             onClick={() =>
               signIn("google", {
-                callbackUrl: "http://localhost:3000/",
+                callbackUrl: `${process.env.URL}/`,
               })
             }>
             Login with Google
@@ -55,7 +55,7 @@ function Login() {
             className={styles.login_button}
             onClick={() =>
               signIn("github", {
-                callbackUrl: "http://localhost:3000/",
+                callbackUrl: `${process.env.URL}/`,
               })
             }>
             Login with Github

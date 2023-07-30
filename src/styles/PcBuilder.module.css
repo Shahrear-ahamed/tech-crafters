@@ -84,6 +84,11 @@
   align-items: center;
 }
 
+.pc_builder_complete_button {
+  margin: 20px 0;
+  text-align: right;
+}
+
 @media (max-width: 660px) {
   .pc_builder_header {
     flex-direction: column-reverse;

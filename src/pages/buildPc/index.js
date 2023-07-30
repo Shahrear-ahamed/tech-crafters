@@ -1,13 +1,27 @@
 import RootLayout from "@/component/Layout/RootLayout";
 import ComponentPicker from "@/component/UI/ComponentPicker";
 import styles from "@/styles/PcBuilder.module.css";
-import { Typography } from "antd";
+import { Button, Typography } from "antd";
 import { useSelector } from "react-redux";
+import { toast } from "react-toastify";
 
 const { Title, Text } = Typography;
 
 export default function PcBuilder({ categories }) {
   const componentStore = useSelector((state) => state.component);
+  const components = componentStore?.pcComponents;
+  const keys = Object.keys(components);
+
+  const isNull = keys.some((key) => components[key] === null);
+
+  const handleCompleteBuild = () => {
+    if (!isNull) {
+      toast.success("Build Completed");
+    } else {
+      toast.error("Please select all components");
+    }
+  };
+
   return (
     <div className={styles.pc_builder_main}>
       <div className={styles.pc_builder_header}>
@@ -31,6 +45,17 @@ export default function PcBuilder({ categories }) {
           );
         })}
       </div>
+
+      <div>
+        <div className={styles.pc_builder_complete_button}>
+          <Button
+            type="primary"
+            disabled={isNull}
+            onClick={handleCompleteBuild}>
+            Complete Build
+          </Button>
+        </div>
+      </div>
     </div>
   );
 }
@@ -40,7 +65,7 @@ PcBuilder.getLayout = function getLayout(page) {
 };
 
 export async function getServerSideProps() {
-  const res = await fetch("http://localhost:3000/api/categories");
+  const res = await fetch(`${process.env.URL}/api/categories`);
   const data = await res.json();
 
   return {

@@ -32,7 +32,7 @@ export default function BuilderProductComponent({ product, slug }) {
 
   return (
     <Card
-      style={{ width: 260 }}
+      style={{ width: 260, padding: "10px" }}
       cover={
         <Image
           height={220}

@@ -42,9 +42,9 @@ Home.getLayout = function getLayout(page) {
 
 export const getStaticProps = async () => {
   const randomComponentsRes = await fetch(
-    "http://localhost:3000/api/randomComponents"
+    `${process.env.URL}/api/randomComponents`
   );
-  const allComponentsRes = await fetch("http://localhost:3000/api/categories");
+  const allComponentsRes = await fetch(`${process.env.URL}/api/categories`);
 
   const randomComponents = await randomComponentsRes.json();
   const allComponents = await allComponentsRes.json();

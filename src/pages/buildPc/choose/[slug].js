@@ -54,7 +54,7 @@ export const getServerSideProps = async (context) => {
   const { slug } = context.params;
 
   const res = await fetch(
-    `http://localhost:3000/api/component/category/${slug}`
+    `${process.env.URL}/api/component/category/${slug}`
   );
   const chooseSlugComponents = await res.json();
 

@@ -22,7 +22,7 @@ const ProductCard = ({ product }) => {
     <Link href={`/component/details/${id}`}>
       <Card
         hoverable
-        style={{ width: 260 }}
+        style={{ width: 260, padding: "10px" }}
         cover={
           <Image
             height={220}
